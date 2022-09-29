@@ -1,2 +1,2 @@
 # nginx_configs
-dockerized and non-dockerized
+full nginx configs for docker and non-docker with gilab-ci (ci/cd)
