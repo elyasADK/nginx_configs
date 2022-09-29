@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  nginx-docker-container:
+    image: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+    restart: always
+    container_name: 'nginx'
+    ports:
+      - 80:80
+      - 443:443
+    networks:
+      isaco:
+        ipv4_address: 192.168.1.11
+
+networks:
+  isaco:
+    name: isaco
+    external: true
