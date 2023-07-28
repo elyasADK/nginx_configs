@@ -3,14 +3,19 @@ version: 2.1
 workflows:
   test-deploy:
     jobs:
-      - test
+      - test-circle-ci-add-branch:
+          filters:
+            branches:
+              only:
+                - circle-ci-add
+      - test_release-next:
+          filters:
+            branches:
+              only:
+                - release-next
 
 jobs:
-  test:
-    filters:
-      branches:
-        only:
-          - release-next
+  test-circle-ci-add-branch:
     docker:
       - image: cimg/aws:2023.07
     steps:
@@ -20,4 +25,13 @@ jobs:
           command: aws --version
       - run:
           name: echo etwas
-          command: echo "hello from aws container"
+          command: echo "hello from circle-ci-add-branch"
+
+  test_release-next:
+    docker:
+      - image: cimg/aws:2023.07
+    steps:
+      - checkout
+      - run:
+          name: trn
+          command: echo "hello from release-next"
