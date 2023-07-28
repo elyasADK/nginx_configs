@@ -11,4 +11,9 @@ jobs:
       - image: cimg/aws:2023.07
     steps:
       - checkout
-      - run: aws --version
+      - run:
+          name: check version
+          command: aws --version
+      - run:
+          name: echo etwas
+          command: echo "hello from aws container"
