@@ -1,0 +1,19 @@
+version: 2.1
+
+workflows:
+  test-deploy:
+    jobs:
+      - test
+
+jobs:
+  test:
+    docker:
+      - image: cimg/aws:2023.07
+    steps:
+      - checkout
+      - run:
+          name: check version
+          command: aws --version
+      - run:
+          name: echo etwas
+          command: echo "hello from aws container"
