@@ -1,18 +1,22 @@
 version: 2.1
 
 workflows:
-  test-deploy:
+  my-workflow:
     jobs:
       - test-circle-ci-add-branch:
+          #name: job 1
           filters:
             branches:
               only:
                 - circle-ci-add
       - test_release-next:
+          #name: job 2
           filters:
             branches:
               only:
                 - release-next
+          requires:
+            - "test-circle-ci-add-branch"
 
 jobs:
   test-circle-ci-add-branch:
