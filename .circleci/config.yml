@@ -4,19 +4,19 @@ workflows:
   my-workflow:
     jobs:
       - test-circle-ci-add-branch:
-          name: this job run after circle-ci-add-branch branch has changes
+          name: job 1
           filters:
             branches:
               only:
                 - circle-ci-add
       - test_release-next:
-          name: this job run after release-next branch has changes
+          name: job 2
           filters:
             branches:
               only:
                 - release-next
           requires:
-            - test-circle-ci-add-branch
+            - "job 1"
 
 jobs:
   test-circle-ci-add-branch:
