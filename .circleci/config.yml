@@ -5,12 +5,12 @@ workflows:
     jobs:
       - test-circle-ci-add-branch:
           triggers:
-            - schadule:
+            - schedule:
                 cron: 0 0 * * * *
-          filters:
-            branches:
-              only:
-                - circle-ci-add
+                filters:
+                  branches:
+                    only:
+                      - circle-ci-add
       - test_release-next:
           filters:
             branches:
