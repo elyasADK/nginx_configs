@@ -9,6 +9,7 @@ workflows:
             branches:
               only:
                 - circle-ci-add
+                - release-next
       - test_release-next:
           #name: job 2
           filters:
@@ -16,7 +17,7 @@ workflows:
               only:
                 - release-next
           requires:
-            - "test-circle-ci-add-branch"
+            - "test-circle-ci-add-branch" # agar job name dare bayad inja name job dade beshe
 
 jobs:
   test-circle-ci-add-branch:
