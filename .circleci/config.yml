@@ -4,8 +4,9 @@ workflows:
   test-deploy:
     jobs:
       - test-circle-ci-add-branch:
-          schadule:
-            cron: 0 0 * * * *
+          triggers:
+            - schadule:
+                cron: 0 0 * * * *
           filters:
             branches:
               only:
